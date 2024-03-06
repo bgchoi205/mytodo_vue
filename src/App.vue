@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TodoHeader></TodoHeader>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoHeader from "./components/todos/TodoHeader.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    TodoHeader,
+  },
+};
 </script>
 
 <style>
+/* 노멀라이징 */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+}
+/* 노멀라이징 끝 */
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
