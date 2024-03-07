@@ -1,0 +1,53 @@
+<template>
+  <TodoHeader></TodoHeader>
+  <TodoList @openInput="openInput" v-if="isInputState == false"></TodoList>
+  <TodoInput v-if="isInputState"></TodoInput>
+  <TodoFooter></TodoFooter>
+</template>
+
+<script>
+import TodoHeader from "../components/todos/TodoHeader.vue";
+import TodoList from "../components/todos/TodoList.vue";
+import TodoFooter from "../components/todos/TodoFooter.vue";
+import TodoInput from "../components/todos/TodoInput.vue";
+
+export default {
+  name: "TodoApp",
+  data(){
+    return{isInputState: false}
+  },
+  components: {
+    TodoHeader,
+    TodoList,
+    TodoInput,
+    TodoFooter,
+  },
+  methods:{
+    openInput(){
+      return this.isInputState = true
+    }
+  }
+};
+</script>
+
+<style>
+
+
+/* common */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+/* common end */
+</style>

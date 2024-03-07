@@ -2,7 +2,7 @@
   <div class="section-body">
     <div class="container section-body-child">
       <div id="section-btns">
-        <button class="btn btn-green">Add+</button>
+        <button id="add-btn" class="btn btn-green" v-on:click="openInputClick">Add+</button>
       </div>
     </div>
     <div class="container section-body-child">
@@ -38,7 +38,15 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+
+  methods:{
+    openInputClick(){
+      return this.$emit("openInput");
+    }
+  }
+
+};
 </script>
 <style scoped>
 .section-body {
@@ -111,7 +119,6 @@ export default {};
 
 .todo-title {
   font-size: 1.5rem;
-  color: ;
 }
 
 .todo-right {
