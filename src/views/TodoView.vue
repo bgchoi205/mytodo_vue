@@ -1,7 +1,7 @@
 <template>
   <TodoHeader></TodoHeader>
   <TodoList @openInput="openInput" v-if="isInputState == false"></TodoList>
-  <TodoInput v-if="isInputState"></TodoInput>
+  <TodoInput @closeInput="closeInput" v-if="isInputState"></TodoInput>
   <TodoFooter></TodoFooter>
 </template>
 
@@ -13,8 +13,8 @@ import TodoInput from "../components/todos/TodoInput.vue";
 
 export default {
   name: "TodoApp",
-  data(){
-    return{isInputState: false}
+  data() {
+    return { isInputState: false };
   },
   components: {
     TodoHeader,
@@ -22,17 +22,18 @@ export default {
     TodoInput,
     TodoFooter,
   },
-  methods:{
-    openInput(){
-      return this.isInputState = true
-    }
-  }
+  methods: {
+    openInput() {
+      return (this.isInputState = true);
+    },
+    closeInput() {
+      return (this.isInputState = false);
+    },
+  },
 };
 </script>
 
 <style>
-
-
 /* common */
 
 .container {

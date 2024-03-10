@@ -1,119 +1,124 @@
 <template>
-    <div class="section-body">
-  
-  <div class="container section-body-child">
-    <div id="section-input-wrap">
-      <div id="section-input">
-        <div id="title-input-wrap">
-          <div class="font-title"><span>Title</span></div>
-          <div><input type="text" name="title_input" id="title_input"></div>
-        </div>
-        <div id="detail-input-wrap">
-          <div class="font-title"><span>Detail</span></div>
-          <div>
-            <textarea name="detail_input" id="detail_input"></textarea>
+  <div class="section-body">
+    <div class="container section-body-child">
+      <div id="section-input-wrap">
+        <div id="section-input">
+          <div id="title-input-wrap">
+            <div class="font-title"><span>Title</span></div>
+            <div><input type="text" name="title_input" id="title_input" /></div>
+          </div>
+          <div id="detail-input-wrap">
+            <div class="font-title"><span>Detail</span></div>
+            <div>
+              <textarea name="detail_input" id="detail_input"></textarea>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
-  </div>
-  
-  <div class="container section-body-child">
-    <div id="section-btns-wrap">
-      <div id="section-btns">
-        <div class="btn-wrap">
-          <button class="btn btn-green">Save</button>
-          <button class="btn btn-red">Cancel</button>
+
+    <div class="container section-body-child">
+      <div id="section-btns-wrap">
+        <div id="section-btns">
+          <div class="btn-wrap">
+            <button id="saveBtn" class="btn btn-green">Save</button>
+            <button id="cancelBtn" class="btn btn-red" v-on:click="closeInput">
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    
   </div>
-  
-</div>
 </template>
 <script>
 export default {
-    
-}
+  methods: {
+    closeInput() {
+      return this.$emit("closeInput");
+    },
+  },
+};
 </script>
 <style scoped>
-
-.font-title{
-  font-size:1.5rem;
-  font-weight:600;
-  color:#0A6ECD;
+.font-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0a6ecd;
 }
 
-.section-body{
-  height:auto;
-  min-height:calc(100vh - 70px - 80px);
-  padding-top:80px;
+.section-body {
+  height: auto;
+  min-height: calc(100vh - 70px - 80px);
+  padding-top: 80px;
 }
 
 .section-body-child {
   margin-top: 0.9rem;
 }
 
-#section-btns{
-  display:flex;
-  justify-content:end;
+#section-btns {
+  display: flex;
+  justify-content: end;
 }
 
-.btn-green{
-  color:#5EC75E;
-  border:2px solid #5EC75E;
+.btn-green {
+  color: #5ec75e;
+  border: 2px solid #5ec75e;
 }
 
-.btn-red{
-  color:#CD0000;
-  border:2px solid #CD0000;
+.btn-red {
+  color: #cd0000;
+  border: 2px solid #cd0000;
 }
 
-#section-input-wrap{
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
+#section-input-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-#section-input{
-  background-color:#eee;
-  width:60%;
-  height:100%;
-  border-radius:5px;
-  display:flex;
+#section-input {
+  background-color: #eee;
+  width: 60%;
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
   flex-direction: column;
-  padding:10px;
+  padding: 10px;
 }
 
-#detail-input-wrap{
-  margin-top:2rem;
+#detail-input-wrap {
+  margin-top: 2rem;
 }
 
-#section-btns-wrap{
-  display:flex;
-  justify-content:center;
+#section-btns-wrap {
+  display: flex;
+  justify-content: center;
 }
 
-#section-btns-wrap > #section-btns{
-  width:60%;
+#section-btns-wrap > #section-btns {
+  width: 60%;
 }
 
-#title_input{
-  width:100%;
-  padding-top:10px;
-  padding-bottom:10px;
+#title_input {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border: none;
-  font-size:1.3rem;
+  font-size: 1.3rem;
 }
 
-#detail_input{
-  width:100%;
-  height:calc(100vh * 0.25);
+#detail_input {
+  width: 100%;
+  height: calc(100vh * 0.25);
   border: none;
   resize: none;
-  font-size:1.2rem;
+  font-size: 1.2rem;
+}
+
+#saveBtn {
+  margin-right: 4px;
 }
 </style>
