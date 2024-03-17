@@ -1,6 +1,10 @@
 <template>
   <TodoHeader></TodoHeader>
-  <TodoList @openInput="openInput" v-if="isInputState == false"></TodoList>
+  <TodoList
+    @openInput="openInput"
+    :myTodos="myTodos"
+    v-if="isInputState == false"
+  ></TodoList>
   <TodoInput @closeInput="closeInput" v-if="isInputState"></TodoInput>
   <TodoFooter></TodoFooter>
 </template>
@@ -13,9 +17,10 @@ import TodoInput from "../components/todos/TodoInput.vue";
 
 export default {
   name: "TodoApp",
-  data() {
-    return { isInputState: false };
-  },
+  data: () => ({
+    isInputState: false,
+    myTodos: [""],
+  }),
   components: {
     TodoHeader,
     TodoList,
@@ -29,6 +34,20 @@ export default {
     closeInput() {
       return (this.isInputState = false);
     },
+    getMyTodos() {
+      this.axios
+        .get("http://localhost:8000/todo/")
+        .then((response) => {
+          console.log(response.data);
+          this.myTodos = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+  created() {
+    this.getMyTodos();
   },
 };
 </script>

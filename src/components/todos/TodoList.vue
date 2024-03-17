@@ -2,28 +2,22 @@
   <div class="section-body">
     <div class="container section-body-child">
       <div id="section-btns">
-        <button id="add-btn" class="btn btn-green" v-on:click="openInputClick">Add+</button>
+        <button id="add-btn" class="btn btn-green" v-on:click="openInputClick">
+          Add+
+        </button>
       </div>
     </div>
     <div class="container section-body-child">
       <div id="section-list">
         <ul id="section-list-ul">
-          <li>
+          <li v-for="myTodo in myTodos" v-bind:key="myTodo">
             <div class="todo-left">
-              <div class="todo-title"><span>title</span></div>
-              <div><span>20xx-01-01 12:01:25</span></div>
-            </div>
-            <div class="todo-right">
-              <div class="complete-text todo-right-text active">
-                <span>Complete</span>
+              <div class="todo-title">
+                <span>{{ myTodo.title }}</span>
               </div>
-              <div class="delete-text todo-right-text"><span>Delete</span></div>
-            </div>
-          </li>
-          <li>
-            <div class="todo-left">
-              <div class="todo-title"><span>title</span></div>
-              <div><span>20xx-01-01 12:01:25</span></div>
+              <div>
+                <span>{{ myTodo.created }}</span>
+              </div>
             </div>
             <div class="todo-right">
               <div class="complete-text todo-right-text">
@@ -39,13 +33,14 @@
 </template>
 <script>
 export default {
-
-  methods:{
-    openInputClick(){
+  props: {
+    myTodos: Array,
+  },
+  methods: {
+    openInputClick() {
       return this.$emit("openInput");
-    }
-  }
-
+    },
+  },
 };
 </script>
 <style scoped>
