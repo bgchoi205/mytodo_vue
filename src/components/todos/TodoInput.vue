@@ -5,12 +5,23 @@
         <div id="section-input">
           <div id="title-input-wrap">
             <div class="font-title"><span>Title</span></div>
-            <div><input type="text" name="title_input" id="title_input" /></div>
+            <div>
+              <input
+                type="text"
+                name="title_input"
+                id="title_input"
+                v-model="input_title"
+              />
+            </div>
           </div>
           <div id="detail-input-wrap">
             <div class="font-title"><span>Detail</span></div>
             <div>
-              <textarea name="detail_input" id="detail_input"></textarea>
+              <textarea
+                name="detail_input"
+                id="detail_input"
+                v-model="input_detail"
+              ></textarea>
             </div>
           </div>
         </div>
@@ -21,7 +32,9 @@
       <div id="section-btns-wrap">
         <div id="section-btns">
           <div class="btn-wrap">
-            <button id="saveBtn" class="btn btn-green">Save</button>
+            <button id="saveBtn" class="btn btn-green" v-on:click="saveTodo">
+              Save
+            </button>
             <button id="cancelBtn" class="btn btn-red" v-on:click="closeInput">
               Cancel
             </button>
@@ -33,9 +46,31 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    input_title: "",
+    input_detail: "",
+  }),
   methods: {
     closeInput() {
-      return this.$emit("closeInput");
+      this.$emit("closeInput");
+    },
+    saveTodo() {
+      const data = {
+        title: this.input_title,
+        detail: this.input_detail,
+      };
+
+      this.axios
+        .post("http://localhost:8000/todo/save/", data)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+      this.closeInput();
+      // this.$router.go(-1);
     },
   },
 };

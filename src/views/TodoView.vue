@@ -32,7 +32,8 @@ export default {
       return (this.isInputState = true);
     },
     closeInput() {
-      return (this.isInputState = false);
+      this.isInputState = false;
+      this.getMyTodos();
     },
     getMyTodos() {
       this.axios
