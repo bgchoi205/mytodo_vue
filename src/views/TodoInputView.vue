@@ -1,42 +1,51 @@
 <template>
   <TodoHeader></TodoHeader>
-  <TodoList :myTodos="myTodos" @moveInput="moveInput"></TodoList>
+  <TodoInput
+    :input_title="input_title"
+    :input_detail="input_detail"
+    @saveTodo="saveTodo"
+  ></TodoInput>
   <TodoFooter></TodoFooter>
 </template>
 
 <script>
 import TodoHeader from "../components/todos/TodoHeader.vue";
-import TodoList from "../components/todos/TodoList.vue";
 import TodoFooter from "../components/todos/TodoFooter.vue";
+import TodoInput from "../components/todos/TodoInput.vue";
 
 export default {
-  name: "TodoApp",
+  name: "TodoInputView",
   data: () => ({
-    myTodos: [""],
+    input_title: "a",
+    input_detail: "a",
   }),
   components: {
     TodoHeader,
-    TodoList,
+    TodoInput,
     TodoFooter,
   },
   methods: {
-    moveInput() {
-      this.$router.push("/ins");
+    closeInput() {
+      this.$router.push("/");
     },
-    getMyTodos() {
+    saveTodo(data) {
+      //   const data = {
+      //     title: this.input_title,
+      //     detail: this.input_detail,
+      //   };
+
       this.axios
-        .get("http://localhost:8000/todo/")
+        .post("http://localhost:8000/todo/save/", data)
         .then((response) => {
           console.log(response.data);
-          this.myTodos = response.data;
         })
         .catch((e) => {
           console.log(e);
         });
+
+      this.closeInput();
+      // this.$router.go(-1);
     },
-  },
-  created() {
-    this.getMyTodos();
   },
 };
 </script>

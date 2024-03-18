@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     openInputClick() {
-      return this.$emit("openInput");
+      return this.$emit("moveInput");
     },
   },
 };

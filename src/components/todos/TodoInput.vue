@@ -10,7 +10,7 @@
                 type="text"
                 name="title_input"
                 id="title_input"
-                v-model="input_title"
+                v-model="input_title_child"
               />
             </div>
           </div>
@@ -20,7 +20,7 @@
               <textarea
                 name="detail_input"
                 id="detail_input"
-                v-model="input_detail"
+                v-model="input_detail_child"
               ></textarea>
             </div>
           </div>
@@ -46,9 +46,11 @@
 </template>
 <script>
 export default {
+  props: ["input_title", "input_detail"],
   data: () => ({
-    input_title: "",
-    input_detail: "",
+    // 수정중
+    input_title_child: this.input_title,
+    input_detail_child: this.input_detail,
   }),
   methods: {
     closeInput() {
@@ -56,18 +58,20 @@ export default {
     },
     saveTodo() {
       const data = {
-        title: this.input_title,
-        detail: this.input_detail,
+        title: this.input_title_child,
+        detail: this.input_detail_child,
       };
 
-      this.axios
-        .post("http://localhost:8000/todo/save/", data)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      this.$emit("saveTodo", data);
+
+      // this.axios
+      //   .post("http://localhost:8000/todo/save/", data)
+      //   .then((response) => {
+      //     console.log(response.data);
+      //   })
+      //   .catch((e) => {
+      //     console.log(e);
+      //   });
 
       this.closeInput();
       // this.$router.go(-1);
