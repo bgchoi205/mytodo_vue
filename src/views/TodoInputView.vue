@@ -1,10 +1,6 @@
 <template>
   <TodoHeader></TodoHeader>
-  <TodoInput
-    :input_title="input_title"
-    :input_detail="input_detail"
-    @saveTodo="saveTodo"
-  ></TodoInput>
+  <TodoInput @saveTodo="saveTodo"></TodoInput>
   <TodoFooter></TodoFooter>
 </template>
 
@@ -15,10 +11,6 @@ import TodoInput from "../components/todos/TodoInput.vue";
 
 export default {
   name: "TodoInputView",
-  data: () => ({
-    input_title: "a",
-    input_detail: "a",
-  }),
   components: {
     TodoHeader,
     TodoInput,

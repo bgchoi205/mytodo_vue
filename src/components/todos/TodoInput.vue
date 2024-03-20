@@ -10,7 +10,7 @@
                 type="text"
                 name="title_input"
                 id="title_input"
-                v-model="input_title_child"
+                v-model="input_title"
               />
             </div>
           </div>
@@ -20,7 +20,7 @@
               <textarea
                 name="detail_input"
                 id="detail_input"
-                v-model="input_detail_child"
+                v-model="input_detail"
               ></textarea>
             </div>
           </div>
@@ -46,11 +46,10 @@
 </template>
 <script>
 export default {
-  props: ["input_title", "input_detail"],
   data: () => ({
     // 수정중
-    input_title_child: this.input_title,
-    input_detail_child: this.input_detail,
+    input_title: "",
+    input_detail: "",
   }),
   methods: {
     closeInput() {
@@ -58,8 +57,8 @@ export default {
     },
     saveTodo() {
       const data = {
-        title: this.input_title_child,
-        detail: this.input_detail_child,
+        title: this.input_title,
+        detail: this.input_detail,
       };
 
       this.$emit("saveTodo", data);
@@ -89,7 +88,7 @@ export default {
 .section-body {
   height: auto;
   min-height: calc(100vh - 70px - 80px);
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .section-body-child {

@@ -47,7 +47,7 @@ export default {
 .section-body {
   height: auto;
   min-height: calc(100vh - 70px - 80px);
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .section-body-child {

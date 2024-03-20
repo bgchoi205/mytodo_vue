@@ -1,8 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
 import TodoView from "../views/TodoView.vue";
 import TodoInputView from "@/views/TodoInputView.vue";
+import TestView from "@/views/TestView.vue";
 
 const routes = [
+  {
+    path: "/test",
+    name: "test",
+    component: TestView,
+  },
   {
     path: "/",
     name: "todo",

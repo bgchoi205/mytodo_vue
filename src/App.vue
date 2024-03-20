@@ -3,7 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
@@ -32,4 +32,25 @@ button {
   border: none;
 }
 /* 노멀라이징 끝 */
+
+/* common style */
+.section-body {
+  height: auto;
+  min-height: calc(100vh - 70px - 80px);
+  padding-top: 60px;
+}
+
+.section-body-child {
+  margin-top: 0.9rem;
+}
+
+.btn-green {
+  color: #5ec75e;
+  border: 2px solid #5ec75e;
+}
+
+.btn-red {
+  color: #cd0000;
+  border: 2px solid #cd0000;
+}
 </style>
